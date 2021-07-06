@@ -1,5 +1,5 @@
 # Weather_App
- <Creating a weather app using API>
+ Creating a weather app using API
  
  - [Check Demo](https://jameshan2002.github.io/Weather_App/)
  
