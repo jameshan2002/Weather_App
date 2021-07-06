@@ -1,13 +1,16 @@
-const API_KEY = "bca923c46f8daa20814a16befa473c41";
-const citySearchInput = document.querySelector("#city-search");
-const citySearchButton = document.querySelector("#city-search-button");
+import weather from "./modules/weather.js";
+import display from "./modules/display.js";
 
-function cityWeather(event) {
-  event.preventDefault;
-  const name = citySearchInput.value;
-  const url = `https://api.openweathermap.org/data/2.5/weather?q=${name}&appid=${API_KEY}`;
-  citySearchInput.value = null;
-  console.log(url);
-}
+const searchForm = document.getElementById("searchForm");
+const searchInput = document.getElementById("searchInput");
+const searchBtn = document.getElementById("searchBtn");
 
-citySearchButton.addEventListener("submit", cityWeather);
+searchForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+});
+
+searchBtn.addEventListener("click", async () => {
+  if (searchInput.value === "") return;
+  const weatherData = await weather.cityWeather(searchInput.value);
+  display.setSearchResult(weatherData);
+});

@@ -1,21 +1,29 @@
 export default (function () {
   const API_KEY = "bca923c46f8daa20814a16befa473c41";
-  const citySearchInput = document.querySelector("#city-search");
-  const citySearchButton = document.querySelector("#city-search-button");
 
-  function cityWeather(event) {
-    event.preventDefault;
-    const name = citySearchInput.value;
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${name}&appid=${API_KEY}`;
-    citySearchInput.value = null;
-    console.log(url);
+  function convertData(data) {
+    const {
+      name: cityName,
+      main: { temp: temperature, feels_like: feelsLike, humidity },
+      wind: { speed: windSpeed },
+    } = data;
+    return { cityName, temperature, feelsLike, humidity, windSpeed };
   }
 
-  citySearchButton.addEventListener("submit", cityWeather);
-
-  const loadWeather = () => {};
+  async function cityWeather(city) {
+    try {
+      const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${API_KEY}`;
+      const response = await fetch(url, { mode: "cors" });
+      if (!response.ok) throw new Error(`City ${city} not found`);
+      const data = convertData(await response.json());
+      return data;
+    } catch (error) {
+      alert(error);
+      return null;
+    }
+  }
 
   return {
-    loadWeather,
+    cityWeather,
   };
 })();
