@@ -24,6 +24,7 @@
     <div id="content">
       <header>
         <form action="" id="searchForm">
+          <span class="text-search">Search the city over here! -> </span>
           <input
             type="text"
             placeholder=" Search the city"
@@ -35,18 +36,29 @@
           </button>
         </form>
       </header>
-      <div class="weather-section">
-        <div class="todays-weather">
-          <h2 class="city" id="cityName">London</h2>
-          <h3 class="city-temperture" id="cityTemp">61°F</h3>
+      <div id="weather-section">
+        <div class="weather-section">
+          <div class="todays-weather">
+            <h2 class="city" id="cityName">London</h2>
+            <h3 class="city-temperture" id="cityTemp">61°F</h3>
+          </div>
+          <div class="others">
+            <h4 id="cityFeelsLike">Feels like: 59°F</h4>
+            <h4 id="cityHumidity">Humidity: 72%</h4>
+            <h4 id="cityWind">Wind: 10 mph</h4>
+          </div>
         </div>
-        <div class="others">
-          <h4 id="cityFeelsLike">Feels like: 59°F</h4>
-          <h4 id="cityHumidity">Humidity: 72%</h4>
-          <h4 id="cityWind">Wind: 10 mph</h4>
-        </div>
+        <form action="" class="temp-form">
+          <input
+            type="checkbox"
+            name="temperture-change"
+            id="temperture-change"
+            class="temperture-change"
+            value="Celcius"
+          />
+          <label for="Celcius">Show in Celcius</label>
+        </form>
       </div>
-      <!-- <button class="temperture-change">Temp</button> -->
     </div>
   </body>
 </html>
